@@ -50,17 +50,12 @@
 
 
 /* =====================================================
-   HTML
+   HTML / BODY
 ===================================================== */
 
 html {
     scroll-behavior: smooth;
 }
-
-
-/* =====================================================
-   BODY
-===================================================== */
 
 body {
     min-height: 100vh;
@@ -117,16 +112,13 @@ body {
     -webkit-backdrop-filter: blur(14px);
 
     position: sticky;
-
     top: 0;
 
     z-index: 100;
 }
 
-
 .header-inner {
     width: 100%;
-
     max-width: 1050px;
 
     margin: 0 auto;
@@ -134,9 +126,7 @@ body {
     padding: 15px 25px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 }
 
@@ -147,7 +137,6 @@ body {
 
 .brand {
     display: flex;
-
     align-items: center;
 
     gap: 10px;
@@ -157,38 +146,31 @@ body {
     text-decoration: none;
 }
 
-
 .brand-icon {
     width: 42px;
     height: 42px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    background:
-        var(--primary-light);
+    background: var(--primary-light);
 
     border-radius: 12px;
 
     font-size: 22px;
 
-    box-shadow:
-        var(--shadow-sm);
+    box-shadow: var(--shadow-sm);
 }
-
 
 .brand strong {
     display: block;
 
     font-size: 16px;
-
     font-weight: 750;
 
     line-height: 1.2;
 }
-
 
 .brand small {
     display: block;
@@ -207,7 +189,6 @@ body {
 
 .header-status {
     display: flex;
-
     align-items: center;
 
     gap: 8px;
@@ -227,7 +208,6 @@ body {
     font-weight: 650;
 }
 
-
 .status-dot {
     width: 7px;
     height: 7px;
@@ -242,8 +222,7 @@ body {
         0 0 0 4px
         rgba(34, 197, 94, 0.12);
 
-    animation:
-        pulse 2s infinite;
+    animation: pulse 2s infinite;
 }
 
 
@@ -253,7 +232,6 @@ body {
 
 .weather-app {
     width: calc(100% - 30px);
-
     max-width: 900px;
 
     margin: 35px auto;
@@ -268,11 +246,9 @@ body {
         1px solid
         rgba(226, 232, 240, 0.85);
 
-    box-shadow:
-        var(--shadow);
+    box-shadow: var(--shadow);
 
-    animation:
-        appEnter 0.55s ease;
+    animation: appEnter 0.55s ease;
 }
 
 
@@ -286,9 +262,7 @@ body {
     padding: 38px 40px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     position: relative;
@@ -306,9 +280,6 @@ body {
         );
 }
 
-
-/* Decorative circles */
-
 .hero::before,
 .hero::after {
     content: "";
@@ -320,7 +291,6 @@ body {
     pointer-events: none;
 }
 
-
 .hero::before {
     width: 230px;
     height: 230px;
@@ -331,7 +301,6 @@ body {
     background:
         rgba(255, 255, 255, 0.08);
 }
-
 
 .hero::after {
     width: 150px;
@@ -357,10 +326,8 @@ body {
     max-width: 650px;
 }
 
-
 .hero-badge {
     display: inline-flex;
-
     align-items: center;
 
     padding: 7px 12px;
@@ -383,7 +350,6 @@ body {
     font-weight: 650;
 }
 
-
 .hero h1 {
     font-size:
         clamp(28px, 4vw, 38px);
@@ -394,7 +360,6 @@ body {
 
     letter-spacing: -0.8px;
 }
-
 
 .hero p {
     max-width: 560px;
@@ -480,7 +445,6 @@ body {
     position: absolute;
 
     left: 16px;
-
     top: 50%;
 
     transform:
@@ -530,16 +494,13 @@ body {
         background 0.25s ease;
 }
 
-
 #cityInput::placeholder {
     color: #94a3b8;
 }
 
-
 #cityInput:hover {
     border-color: #cbd5e1;
 }
-
 
 #cityInput:focus {
     background: white;
@@ -610,7 +571,6 @@ body {
         opacity 0.2s ease;
 }
 
-
 #searchButton:hover {
     transform:
         translateY(-2px);
@@ -627,12 +587,10 @@ body {
         );
 }
 
-
 #searchButton:active {
     transform:
         translateY(0);
 }
-
 
 #searchButton:disabled {
     opacity: 0.65;
@@ -658,9 +616,7 @@ body {
         transform 0.2s ease;
 }
 
-
-#searchButton:hover
-.button-arrow {
+#searchButton:hover .button-arrow {
     transform:
         translateX(3px);
 }
@@ -765,7 +721,7 @@ body {
 
 
 /* =====================================================
-   LOCATION CARD
+   LOCATION
 ===================================================== */
 
 .location-card {
@@ -784,11 +740,9 @@ body {
         1px solid var(--border);
 }
 
-
 .location-info {
     min-width: 0;
 }
-
 
 .location-label {
     display: block;
@@ -805,7 +759,6 @@ body {
     letter-spacing: 1px;
 }
 
-
 .location-card h2 {
     font-size: 29px;
 
@@ -818,7 +771,6 @@ body {
     overflow-wrap: anywhere;
 }
 
-
 .location-card p {
     color:
         var(--muted);
@@ -828,12 +780,11 @@ body {
 
 
 /* =====================================================
-   CURRENT WEATHER ICON
+   CURRENT ICON
 ===================================================== */
 
 .current-icon {
     width: 76px;
-
     height: 76px;
 
     flex-shrink: 0;
@@ -864,7 +815,7 @@ body {
 
 
 /* =====================================================
-   TEMPERATURE CARD
+   TEMPERATURE
 ===================================================== */
 
 .temperature-card {
@@ -873,7 +824,6 @@ body {
     padding:
         35px 10px 32px;
 }
-
 
 .temperature {
     font-size:
@@ -892,7 +842,6 @@ body {
         0 8px 25px
         rgba(37, 99, 235, 0.12);
 }
-
 
 .description {
     margin-top: 13px;
@@ -955,7 +904,6 @@ body {
         border-color 0.25s ease;
 }
 
-
 .metric-card:hover {
     transform:
         translateY(-4px);
@@ -1002,7 +950,6 @@ body {
     min-width: 0;
 }
 
-
 .metric-card span {
     display: block;
 
@@ -1015,7 +962,6 @@ body {
 
     white-space: nowrap;
 }
-
 
 .metric-card strong {
     display: block;
@@ -1051,7 +997,6 @@ body {
 
     margin-top: 25px;
 }
-
 
 .update-dot {
     width: 6px;
@@ -1115,7 +1060,6 @@ body {
     gap: 10px;
 }
 
-
 .footer-icon {
     width: 38px;
     height: 38px;
@@ -1134,13 +1078,11 @@ body {
     font-size: 19px;
 }
 
-
 .footer-brand strong {
     display: block;
 
     font-size: 13px;
 }
-
 
 .footer-brand span:not(.footer-icon) {
     display: block;
@@ -1177,14 +1119,12 @@ body {
     text-align: right;
 }
 
-
 .footer-credit strong {
     color:
         var(--text);
 
     font-weight: 700;
 }
-
 
 .footer-credit a {
     margin-left: 5px;
@@ -1199,7 +1139,6 @@ body {
     transition:
         color 0.2s ease;
 }
-
 
 .footer-credit a:hover {
     color:
@@ -1399,20 +1338,26 @@ body {
 
 
     .brand-icon {
-        width: 38px;
-        height: 38px;
+        width:
+            38px;
 
-        font-size: 19px;
+        height:
+            38px;
+
+        font-size:
+            19px;
     }
 
 
     .brand strong {
-        font-size: 15px;
+        font-size:
+            15px;
     }
 
 
     .header-status {
-        font-size: 10px;
+        font-size:
+            10px;
 
         padding:
             7px 10px;

@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,211 +10,364 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Weather Dashboard</title>
+    <meta
+        name="description"
+        content="A modern weather dashboard for checking live weather information by city."
+    >
+
+    <title>Weather Dashboard | Priyabrata Patra</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <main class="weather-app">
+    <div class="page">
 
-        <!-- Header -->
-        <header class="header">
+        <!-- ================= HEADER ================= -->
 
-            <div>
-                <h1>Weather Dashboard</h1>
+        <header class="site-header">
 
-                <p>
-                    Search any city to view live weather data.
-                </p>
-            </div>
+            <div class="header-inner">
 
-            <div class="weather-icon">
-                ☀️
+                <a href="#" class="brand">
+                    <span class="brand-icon">☀️</span>
+
+                    <span>
+                        <strong>Weather</strong>
+                        <small>Dashboard</small>
+                    </span>
+                </a>
+
+                <div class="header-status">
+                    <span class="status-dot"></span>
+                    Live Weather
+                </div>
+
             </div>
 
         </header>
 
 
-        <!-- Search -->
-        <section class="search-section">
+        <!-- ================= MAIN ================= -->
 
-            <form id="searchForm">
+        <main class="weather-app">
 
-                <input
-                    type="text"
-                    id="cityInput"
-                    placeholder="Enter city name..."
-                    autocomplete="off"
-                    required
-                >
+            <!-- Hero Header -->
 
-                <button
-                    type="submit"
-                    id="searchButton"
-                >
-                    Search
-                </button>
+            <section class="hero">
 
-            </form>
+                <div class="hero-content">
 
-        </section>
+                    <span class="hero-badge">
+                        🌤️ Real-Time Weather
+                    </span>
 
+                    <h1>
+                        Weather Dashboard
+                    </h1>
 
-        <!-- Loading -->
-        <div
-            id="loading"
-            class="loading"
-            aria-live="polite"
-        >
-            Loading weather...
-        </div>
-
-
-        <!-- Error -->
-        <div
-            id="errorMessage"
-            class="error-message"
-            role="alert"
-        ></div>
-
-
-        <!-- Weather Dashboard -->
-        <section
-            id="weatherDashboard"
-            class="weather-dashboard"
-        >
-
-            <!-- Location -->
-            <div class="location-card">
-
-                <div>
-
-                    <h2 id="cityName">
-                        Kolkata
-                    </h2>
-
-                    <p id="countryName">
-                        India
+                    <p>
+                        Search any city to view live weather
+                        conditions, temperature, humidity and wind.
                     </p>
 
                 </div>
 
-                <div class="current-icon" id="weatherIcon">
+                <div class="hero-weather-icon">
                     ☀️
                 </div>
 
-            </div>
+            </section>
 
 
-            <!-- Main Temperature -->
-            <div class="temperature-card">
+            <!-- Search -->
 
-                <div
-                    id="temperature"
-                    class="temperature"
-                >
-                    --°C
-                </div>
+            <section class="search-section">
 
-                <div
-                    id="weatherDescription"
-                    class="description"
-                >
-                    Weather
-                </div>
+                <form id="searchForm">
 
-            </div>
+                    <div class="input-wrapper">
 
+                        <span class="search-icon">
+                            🔎
+                        </span>
 
-            <!-- Metrics -->
-            <div class="metrics">
+                        <input
+                            type="text"
+                            id="cityInput"
+                            placeholder="Enter city name..."
+                            autocomplete="off"
+                            required
+                        >
 
-                <article class="metric-card">
-
-                    <div class="metric-icon">
-                        💧
                     </div>
 
-                    <div>
-                        <span>Humidity</span>
+                    <button
+                        type="submit"
+                        id="searchButton"
+                    >
+                        <span>Search Weather</span>
+                        <span class="button-arrow">→</span>
+                    </button>
 
-                        <strong id="humidity">
-                            --%
-                        </strong>
-                    </div>
+                </form>
 
-                </article>
-
-
-                <article class="metric-card">
-
-                    <div class="metric-icon">
-                        💨
-                    </div>
-
-                    <div>
-                        <span>Wind Speed</span>
-
-                        <strong id="windSpeed">
-                            -- km/h
-                        </strong>
-                    </div>
-
-                </article>
+            </section>
 
 
-                <article class="metric-card">
+            <!-- Loading -->
 
-                    <div class="metric-icon">
-                        🌡️
-                    </div>
+            <div
+                id="loading"
+                class="loading"
+                aria-live="polite"
+            >
 
-                    <div>
-                        <span>Feels Like</span>
+                <span class="loader"></span>
 
-                        <strong id="feelsLike">
-                            --°C
-                        </strong>
-                    </div>
-
-                </article>
-
-
-                <article class="metric-card">
-
-                    <div class="metric-icon">
-                        ☁️
-                    </div>
-
-                    <div>
-                        <span>Cloud Cover</span>
-
-                        <strong id="cloudCover">
-                            --%
-                        </strong>
-                    </div>
-
-                </article>
-
-            </div>
-
-
-            <!-- Updated Time -->
-            <div class="updated">
-
-                Last updated:
-
-                <span id="updatedTime">
-                    --
+                <span>
+                    Loading weather data...
                 </span>
 
             </div>
 
-        </section>
 
-    </main>
+            <!-- Error -->
+
+            <div
+                id="errorMessage"
+                class="error-message"
+                role="alert"
+            ></div>
+
+
+            <!-- ================= WEATHER DASHBOARD ================= -->
+
+            <section
+                id="weatherDashboard"
+                class="weather-dashboard"
+            >
+
+                <!-- Location -->
+
+                <div class="location-card">
+
+                    <div class="location-info">
+
+                        <span class="location-label">
+                            CURRENT LOCATION
+                        </span>
+
+                        <h2 id="cityName">
+                            Kolkata
+                        </h2>
+
+                        <p id="countryName">
+                            India
+                        </p>
+
+                    </div>
+
+                    <div
+                        class="current-icon"
+                        id="weatherIcon"
+                    >
+                        ☀️
+                    </div>
+
+                </div>
+
+
+                <!-- Main Temperature -->
+
+                <div class="temperature-card">
+
+                    <div
+                        id="temperature"
+                        class="temperature"
+                    >
+                        --°C
+                    </div>
+
+                    <div
+                        id="weatherDescription"
+                        class="description"
+                    >
+                        Weather
+                    </div>
+
+                </div>
+
+
+                <!-- Metrics -->
+
+                <div class="metrics">
+
+                    <article class="metric-card">
+
+                        <div class="metric-icon">
+                            💧
+                        </div>
+
+                        <div class="metric-content">
+
+                            <span>
+                                Humidity
+                            </span>
+
+                            <strong id="humidity">
+                                --%
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <div class="metric-icon">
+                            💨
+                        </div>
+
+                        <div class="metric-content">
+
+                            <span>
+                                Wind Speed
+                            </span>
+
+                            <strong id="windSpeed">
+                                -- km/h
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <div class="metric-icon">
+                            🌡️
+                        </div>
+
+                        <div class="metric-content">
+
+                            <span>
+                                Feels Like
+                            </span>
+
+                            <strong id="feelsLike">
+                                --°C
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <div class="metric-icon">
+                            ☁️
+                        </div>
+
+                        <div class="metric-content">
+
+                            <span>
+                                Cloud Cover
+                            </span>
+
+                            <strong id="cloudCover">
+                                --%
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- Updated Time -->
+
+                <div class="updated">
+
+                    <span class="update-dot"></span>
+
+                    Last updated:
+
+                    <span id="updatedTime">
+                        --
+                    </span>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer class="site-footer">
+
+            <div class="footer-inner">
+
+                <div class="footer-brand">
+                    <span class="footer-icon">🌦️</span>
+
+                    <div>
+                        <strong>
+                            Weather Dashboard
+                        </strong>
+
+                        <span>
+                            Live weather information
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="footer-credit">
+
+                    <span>
+                        Made by
+                    </span>
+
+                    <strong>
+                        Priyabrata Patra
+                    </strong>
+
+                    <a
+                        href="https://www.linkedin.com/in/priyabratapatra/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        LinkedIn ↗
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 Weather Dashboard
+                </span>
+
+                <span>
+                    Built with HTML, CSS & JavaScript
+                </span>
+
+            </div>
+
+        </footer>
+
+    </div>
 
 
     <script src="script.js"></script>
@@ -221,3 +375,4 @@
 </body>
 
 </html>
+```

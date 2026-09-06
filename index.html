@@ -1,1744 +1,555 @@
-/* =====================================================
-   WEATHER DASHBOARD
-   Modern Responsive UI
-   Made by Priyabrata Patra
-===================================================== */
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
 
-/* =====================================================
-   RESET
-===================================================== */
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+    <meta
+        name="description"
+        content="Weather Dashboard - Search any city to view live weather information."
+    >
 
+    <meta
+        name="author"
+        content="Priyabrata Patra"
+    >
 
-/* =====================================================
-   ROOT VARIABLES
-===================================================== */
+    <title>Weather Dashboard | Priyabrata Patra</title>
 
-:root {
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --primary-light: #eff6ff;
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
 
-    --background: #f4f7fb;
-    --surface: #ffffff;
-    --surface-soft: #f8fafc;
 
-    --text: #172033;
-    --muted: #64748b;
+<body>
 
-    --border: #e2e8f0;
+    <div class="page">
 
-    --danger: #dc2626;
-    --danger-bg: #fef2f2;
 
-    --success: #22c55e;
+        <!-- =================================================
+             HEADER
+        ================================================== -->
 
-    --shadow-sm:
-        0 4px 15px rgba(15, 23, 42, 0.05);
+        <header class="site-header">
 
-    --shadow:
-        0 15px 45px rgba(15, 23, 42, 0.09);
+            <div class="header-inner">
 
-    --radius: 22px;
-}
+                <!-- Brand -->
 
+                <a
+                    href="#"
+                    class="brand"
+                    aria-label="Weather Dashboard Home"
+                >
 
-/* =====================================================
-   HTML
-===================================================== */
+                    <span class="brand-icon">
+                        ☀️
+                    </span>
 
-html {
-    scroll-behavior: smooth;
-}
+                    <span>
 
+                        <strong>
+                            Weather
+                        </strong>
 
-/* =====================================================
-   BODY
-===================================================== */
+                        <small>
+                            Dashboard
+                        </small>
 
-body {
-    min-height: 100vh;
+                    </span>
 
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        Helvetica,
-        sans-serif;
+                </a>
 
-    background:
-        radial-gradient(
-            circle at top left,
-            #eaf2ff 0,
-            transparent 35%
-        ),
-        var(--background);
 
-    color: var(--text);
+                <!-- Live Status -->
 
-    -webkit-font-smoothing: antialiased;
-}
+                <div
+                    class="header-status"
+                    aria-label="Weather service status"
+                >
 
+                    <span class="status-dot"></span>
 
-/* =====================================================
-   PAGE
-===================================================== */
+                    <span>
+                        Live Weather
+                    </span>
 
-.page {
-    min-height: 100vh;
+                </div>
 
-    display: flex;
-    flex-direction: column;
-}
+            </div>
 
+        </header>
 
-/* =====================================================
-   HEADER
-===================================================== */
 
-.site-header {
-    width: 100%;
 
-    background:
-        rgba(255, 255, 255, 0.90);
+        <!-- =================================================
+             MAIN
+        ================================================== -->
 
-    border-bottom:
-        1px solid rgba(226, 232, 240, 0.85);
+        <main class="weather-app">
 
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
 
-    position: sticky;
+            <!-- =================================================
+                 HERO
+            ================================================== -->
 
-    top: 0;
+            <section class="hero">
 
-    z-index: 100;
-}
+                <div class="hero-content">
 
+                    <span class="hero-badge">
+                        🌤️ Real-Time Weather
+                    </span>
 
-.header-inner {
-    width: 100%;
+                    <h1>
+                        Weather Dashboard
+                    </h1>
 
-    max-width: 1050px;
+                    <p>
+                        Search any city to view live weather
+                        conditions, temperature, humidity and wind.
+                    </p>
 
-    margin: 0 auto;
+                </div>
 
-    padding: 15px 25px;
 
-    display: flex;
+                <div
+                    class="hero-weather-icon"
+                    aria-hidden="true"
+                >
+                    ☀️
+                </div>
 
-    align-items: center;
+            </section>
 
-    justify-content: space-between;
-}
 
 
-/* =====================================================
-   BRAND
-===================================================== */
+            <!-- =================================================
+                 SEARCH
+            ================================================== -->
 
-.brand {
-    display: flex;
+            <section
+                class="search-section"
+                aria-label="Search weather"
+            >
 
-    align-items: center;
+                <form
+                    id="searchForm"
+                    autocomplete="off"
+                >
 
-    gap: 10px;
 
-    color: var(--text);
+                    <!-- Input -->
 
-    text-decoration: none;
-}
+                    <div class="input-wrapper">
 
+                        <span
+                            class="search-icon"
+                            aria-hidden="true"
+                        >
+                            🔎
+                        </span>
 
-.brand-icon {
-    width: 42px;
-    height: 42px;
 
-    display: flex;
+                        <input
+                            type="text"
+                            id="cityInput"
+                            placeholder="Enter city name..."
+                            autocomplete="off"
+                            spellcheck="false"
+                            aria-label="Enter city name"
+                            required
+                        >
 
-    align-items: center;
-    justify-content: center;
+                    </div>
 
-    background:
-        var(--primary-light);
 
-    border-radius: 12px;
+                    <!-- Button -->
 
-    font-size: 22px;
+                    <button
+                        type="submit"
+                        id="searchButton"
+                    >
 
-    box-shadow:
-        var(--shadow-sm);
-}
+                        <span>
+                            Search Weather
+                        </span>
 
+                        <span
+                            class="button-arrow"
+                            aria-hidden="true"
+                        >
+                            →
+                        </span>
 
-.brand strong {
-    display: block;
+                    </button>
 
-    font-size: 16px;
+                </form>
 
-    font-weight: 750;
+            </section>
 
-    line-height: 1.2;
-}
 
 
-.brand small {
-    display: block;
+            <!-- =================================================
+                 LOADING
+            ================================================== -->
 
-    margin-top: 2px;
+            <div
+                id="loading"
+                class="loading"
+                aria-live="polite"
+                aria-label="Loading weather"
+            >
 
-    color: var(--muted);
+                <span
+                    class="loader"
+                    aria-hidden="true"
+                ></span>
 
-    font-size: 11px;
-}
+                <span>
+                    Loading weather data...
+                </span>
 
+            </div>
 
-/* =====================================================
-   LIVE STATUS
-===================================================== */
 
-.header-status {
-    display: flex;
 
-    align-items: center;
+            <!-- =================================================
+                 ERROR
+            ================================================== -->
 
-    gap: 8px;
+            <div
+                id="errorMessage"
+                class="error-message"
+                role="alert"
+                aria-live="assertive"
+            ></div>
 
-    padding: 8px 13px;
 
-    background: #f0fdf4;
 
-    color: #15803d;
+            <!-- =================================================
+                 WEATHER DASHBOARD
+            ================================================== -->
 
-    border: 1px solid #dcfce7;
+            <section
+                id="weatherDashboard"
+                class="weather-dashboard"
+                aria-label="Weather information"
+            >
 
-    border-radius: 50px;
 
-    font-size: 12px;
+                <!-- =================================================
+                     LOCATION
+                ================================================== -->
 
-    font-weight: 650;
-}
+                <div class="location-card">
 
+                    <div class="location-info">
 
-.status-dot {
-    width: 7px;
-    height: 7px;
+                        <span class="location-label">
+                            CURRENT LOCATION
+                        </span>
 
-    flex-shrink: 0;
 
-    background: var(--success);
+                        <h2 id="cityName">
+                            Kolkata
+                        </h2>
 
-    border-radius: 50%;
 
-    box-shadow:
-        0 0 0 4px
-        rgba(34, 197, 94, 0.12);
+                        <p id="countryName">
+                            India
+                        </p>
 
-    animation:
-        pulse 2s infinite;
-}
+                    </div>
 
 
-/* =====================================================
-   MAIN WEATHER APP
-===================================================== */
+                    <div
+                        class="current-icon"
+                        id="weatherIcon"
+                        aria-label="Current weather"
+                    >
+                        ☀️
+                    </div>
 
-.weather-app {
-    width: calc(100% - 30px);
+                </div>
 
-    max-width: 900px;
 
-    margin: 35px auto;
 
-    background: var(--surface);
+                <!-- =================================================
+                     TEMPERATURE
+                ================================================== -->
 
-    border-radius: var(--radius);
+                <div class="temperature-card">
 
-    overflow: hidden;
+                    <div
+                        id="temperature"
+                        class="temperature"
+                    >
+                        --°C
+                    </div>
 
-    border:
-        1px solid
-        rgba(226, 232, 240, 0.85);
 
-    box-shadow:
-        var(--shadow);
+                    <div
+                        id="weatherDescription"
+                        class="description"
+                    >
+                        Weather
+                    </div>
 
-    animation:
-        appEnter 0.55s ease;
-}
+                </div>
 
 
-/* =====================================================
-   HERO
-===================================================== */
 
-.hero {
-    min-height: 220px;
+                <!-- =================================================
+                     WEATHER METRICS
+                ================================================== -->
 
-    padding: 38px 40px;
+                <div class="metrics">
 
-    display: flex;
 
-    align-items: center;
+                    <!-- Humidity -->
 
-    justify-content: space-between;
+                    <article class="metric-card">
 
-    position: relative;
+                        <div
+                            class="metric-icon"
+                            aria-hidden="true"
+                        >
+                            💧
+                        </div>
 
-    overflow: hidden;
 
-    color: white;
+                        <div class="metric-content">
 
-    background:
-        linear-gradient(
-            135deg,
-            #1d4ed8 0%,
-            #2563eb 50%,
-            #3b82f6 100%
-        );
-}
+                            <span>
+                                Humidity
+                            </span>
 
+                            <strong id="humidity">
+                                --%
+                            </strong>
 
-/* Decorative circles */
+                        </div>
 
-.hero::before,
-.hero::after {
-    content: "";
+                    </article>
 
-    position: absolute;
 
-    border-radius: 50%;
 
-    pointer-events: none;
-}
+                    <!-- Wind -->
 
+                    <article class="metric-card">
 
-.hero::before {
-    width: 230px;
-    height: 230px;
+                        <div
+                            class="metric-icon"
+                            aria-hidden="true"
+                        >
+                            💨
+                        </div>
 
-    right: -70px;
-    top: -90px;
 
-    background:
-        rgba(255, 255, 255, 0.08);
-}
+                        <div class="metric-content">
 
+                            <span>
+                                Wind Speed
+                            </span>
 
-.hero::after {
-    width: 150px;
-    height: 150px;
+                            <strong id="windSpeed">
+                                -- km/h
+                            </strong>
 
-    left: 45%;
-    bottom: -110px;
+                        </div>
 
-    background:
-        rgba(255, 255, 255, 0.06);
-}
+                    </article>
 
 
-/* =====================================================
-   HERO CONTENT
-===================================================== */
 
-.hero-content {
-    position: relative;
+                    <!-- Feels Like -->
 
-    z-index: 2;
+                    <article class="metric-card">
 
-    max-width: 650px;
-}
+                        <div
+                            class="metric-icon"
+                            aria-hidden="true"
+                        >
+                            🌡️
+                        </div>
 
 
-.hero-badge {
-    display: inline-flex;
+                        <div class="metric-content">
 
-    align-items: center;
+                            <span>
+                                Feels Like
+                            </span>
 
-    padding: 7px 12px;
+                            <strong id="feelsLike">
+                                --°C
+                            </strong>
 
-    margin-bottom: 14px;
+                        </div>
 
-    border-radius: 50px;
+                    </article>
 
-    background:
-        rgba(255, 255, 255, 0.14);
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.18);
 
-    backdrop-filter: blur(8px);
+                    <!-- Cloud Cover -->
 
-    font-size: 11px;
+                    <article class="metric-card">
 
-    font-weight: 650;
-}
+                        <div
+                            class="metric-icon"
+                            aria-hidden="true"
+                        >
+                            ☁️
+                        </div>
 
 
-.hero h1 {
-    font-size:
-        clamp(28px, 4vw, 38px);
+                        <div class="metric-content">
 
-    line-height: 1.15;
+                            <span>
+                                Cloud Cover
+                            </span>
 
-    margin-bottom: 10px;
+                            <strong id="cloudCover">
+                                --%
+                            </strong>
 
-    letter-spacing: -0.8px;
-}
+                        </div>
 
+                    </article>
 
-.hero p {
-    max-width: 560px;
+                </div>
 
-    color:
-        rgba(255, 255, 255, 0.88);
 
-    font-size: 14px;
 
-    line-height: 1.7;
-}
+                <!-- =================================================
+                     UPDATED TIME
+                ================================================== -->
 
+                <div class="updated">
 
-/* =====================================================
-   HERO WEATHER ICON
-===================================================== */
+                    <span
+                        class="update-dot"
+                        aria-hidden="true"
+                    ></span>
 
-.hero-weather-icon {
-    position: relative;
+                    <span>
+                        Last updated:
+                    </span>
 
-    z-index: 2;
+                    <span id="updatedTime">
+                        --
+                    </span>
 
-    font-size: 78px;
+                </div>
 
-    filter:
-        drop-shadow(
-            0 10px 20px
-            rgba(0, 0, 0, 0.15)
-        );
+            </section>
 
-    animation:
-        floating 3s ease-in-out infinite;
-}
+        </main>
 
 
-/* =====================================================
-   SEARCH SECTION
-===================================================== */
 
-.search-section {
-    padding: 28px 35px;
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
 
-    background: white;
+        <footer class="site-footer">
 
-    border-bottom:
-        1px solid var(--border);
-}
 
+            <div class="footer-inner">
 
-/* =====================================================
-   SEARCH FORM
-===================================================== */
 
-#searchForm {
-    width: 100%;
+                <!-- Footer Brand -->
 
-    display: flex;
+                <div class="footer-brand">
 
-    align-items: center;
+                    <span
+                        class="footer-icon"
+                        aria-hidden="true"
+                    >
+                        🌦️
+                    </span>
 
-    gap: 12px;
-}
 
+                    <div>
 
-/* =====================================================
-   INPUT WRAPPER
-===================================================== */
+                        <strong>
+                            Weather Dashboard
+                        </strong>
 
-.input-wrapper {
-    position: relative;
+                        <span>
+                            Live weather information
+                        </span>
 
-    flex: 1 1 auto;
+                    </div>
 
-    min-width: 0;
-}
+                </div>
 
 
-/* =====================================================
-   SEARCH ICON
-===================================================== */
 
-.search-icon {
-    position: absolute;
+                <!-- Creator -->
 
-    left: 16px;
+                <div class="footer-credit">
 
-    top: 50%;
+                    <span>
+                        Made by
+                    </span>
 
-    transform:
-        translateY(-50%);
 
-    font-size: 17px;
+                    <strong>
+                        Priyabrata Patra
+                    </strong>
 
-    pointer-events: none;
 
-    opacity: 0.7;
+                    <a
+                        href="https://www.linkedin.com/in/priyabratapatra/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Priyabrata Patra on LinkedIn"
+                    >
+                        LinkedIn ↗
+                    </a>
 
-    z-index: 2;
-}
+                </div>
 
+            </div>
 
-/* =====================================================
-   CITY INPUT
-===================================================== */
 
-#cityInput {
-    width: 100%;
 
-    height: 54px;
+            <!-- Footer Bottom -->
 
-    display: block;
+            <div class="footer-bottom">
 
-    padding:
-        0 18px 0 47px;
+                <span>
+                    © 2026 Weather Dashboard
+                </span>
 
-    border:
-        1px solid var(--border);
 
-    border-radius: 13px;
+                <span>
+                    Built with HTML, CSS &amp; JavaScript
+                </span>
 
-    outline: none;
+            </div>
 
-    background:
-        var(--surface-soft);
 
-    color: var(--text);
+        </footer>
 
-    font-size: 15px;
 
-    transition:
-        border-color 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease;
-}
+    </div>
 
 
-#cityInput::placeholder {
-    color: #94a3b8;
-}
+    <!-- =================================================
+         JAVASCRIPT
+    ================================================== -->
 
+    <script src="script.js"></script>
 
-#cityInput:hover {
-    border-color: #cbd5e1;
-}
+</body>
 
-
-#cityInput:focus {
-    background: white;
-
-    border-color:
-        var(--primary);
-
-    box-shadow:
-        0 0 0 4px
-        rgba(37, 99, 235, 0.10);
-}
-
-
-/* =====================================================
-   SEARCH BUTTON
-===================================================== */
-
-#searchButton {
-    flex:
-        0 0 165px;
-
-    width: 165px;
-
-    min-width: 165px;
-
-    height: 54px;
-
-    padding:
-        0 18px;
-
-    border: none;
-
-    border-radius: 13px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            #3b82f6
-        );
-
-    color: white;
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 9px;
-
-    white-space: nowrap;
-
-    box-shadow:
-        0 7px 18px
-        rgba(37, 99, 235, 0.20);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease,
-        opacity 0.2s ease;
-}
-
-
-#searchButton:hover {
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 10px 24px
-        rgba(37, 99, 235, 0.28);
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary-dark),
-            var(--primary)
-        );
-}
-
-
-#searchButton:active {
-    transform:
-        translateY(0);
-}
-
-
-#searchButton:disabled {
-    opacity: 0.65;
-
-    cursor: not-allowed;
-
-    transform: none;
-
-    box-shadow: none;
-}
-
-
-/* =====================================================
-   BUTTON ARROW
-===================================================== */
-
-.button-arrow {
-    font-size: 18px;
-
-    line-height: 1;
-
-    transition:
-        transform 0.2s ease;
-}
-
-
-#searchButton:hover
-.button-arrow {
-    transform:
-        translateX(3px);
-}
-
-
-/* =====================================================
-   LOADING
-===================================================== */
-
-.loading {
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 10px;
-
-    padding: 18px;
-
-    background:
-        var(--primary-light);
-
-    color:
-        var(--primary);
-
-    font-size: 13px;
-
-    font-weight: 650;
-}
-
-
-/* =====================================================
-   LOADER
-===================================================== */
-
-.loader {
-    width: 18px;
-    height: 18px;
-
-    border:
-        2px solid #bfdbfe;
-
-    border-top-color:
-        var(--primary);
-
-    border-radius: 50%;
-
-    animation:
-        spin 0.8s linear infinite;
-}
-
-
-/* =====================================================
-   ERROR MESSAGE
-===================================================== */
-
-.error-message {
-    display: none;
-
-    margin:
-        20px 30px;
-
-    padding:
-        14px 16px;
-
-    border-radius: 12px;
-
-    background:
-        var(--danger-bg);
-
-    border:
-        1px solid #fecaca;
-
-    color:
-        var(--danger);
-
-    font-size: 13px;
-
-    line-height: 1.5;
-
-    text-align: center;
-
-    animation:
-        shake 0.35s ease;
-}
-
-
-/* =====================================================
-   WEATHER DASHBOARD
-===================================================== */
-
-.weather-dashboard {
-    display: none;
-
-    padding:
-        5px 35px 35px;
-
-    animation:
-        dashboardEnter 0.45s ease;
-}
-
-
-/* =====================================================
-   LOCATION CARD
-===================================================== */
-
-.location-card {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-    padding:
-        28px 5px;
-
-    border-bottom:
-        1px solid var(--border);
-}
-
-
-.location-info {
-    min-width: 0;
-}
-
-
-.location-label {
-    display: block;
-
-    margin-bottom: 7px;
-
-    color:
-        var(--primary);
-
-    font-size: 10px;
-
-    font-weight: 750;
-
-    letter-spacing: 1px;
-}
-
-
-.location-card h2 {
-    font-size: 29px;
-
-    line-height: 1.2;
-
-    margin-bottom: 5px;
-
-    letter-spacing: -0.4px;
-
-    overflow-wrap: anywhere;
-}
-
-
-.location-card p {
-    color:
-        var(--muted);
-
-    font-size: 14px;
-}
-
-
-/* =====================================================
-   CURRENT WEATHER ICON
-===================================================== */
-
-.current-icon {
-    width: 76px;
-
-    height: 76px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #eff6ff,
-            #dbeafe
-        );
-
-    border-radius: 22px;
-
-    font-size: 47px;
-
-    box-shadow:
-        var(--shadow-sm);
-
-    animation:
-        floating 3s ease-in-out infinite;
-}
-
-
-/* =====================================================
-   TEMPERATURE CARD
-===================================================== */
-
-.temperature-card {
-    text-align: center;
-
-    padding:
-        35px 10px 32px;
-}
-
-
-.temperature {
-    font-size:
-        clamp(55px, 9vw, 76px);
-
-    font-weight: 800;
-
-    line-height: 1;
-
-    letter-spacing: -3px;
-
-    color:
-        var(--primary);
-
-    text-shadow:
-        0 8px 25px
-        rgba(37, 99, 235, 0.12);
-}
-
-
-.description {
-    margin-top: 13px;
-
-    color:
-        var(--muted);
-
-    font-size: 15px;
-
-    font-weight: 500;
-
-    text-transform: capitalize;
-}
-
-
-/* =====================================================
-   METRICS
-===================================================== */
-
-.metrics {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-    gap: 14px;
-}
-
-
-/* =====================================================
-   METRIC CARD
-===================================================== */
-
-.metric-card {
-    min-height: 100px;
-
-    padding: 18px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 16px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #ffffff,
-            #f8fafc
-        );
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
-}
-
-
-.metric-card:hover {
-    transform:
-        translateY(-4px);
-
-    border-color:
-        #bfdbfe;
-
-    box-shadow:
-        0 10px 25px
-        rgba(15, 23, 42, 0.07);
-}
-
-
-/* =====================================================
-   METRIC ICON
-===================================================== */
-
-.metric-icon {
-    width: 43px;
-    height: 43px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background:
-        var(--primary-light);
-
-    border-radius: 12px;
-
-    font-size: 22px;
-}
-
-
-/* =====================================================
-   METRIC CONTENT
-===================================================== */
-
-.metric-content {
-    min-width: 0;
-}
-
-
-.metric-card span {
-    display: block;
-
-    color:
-        var(--muted);
-
-    font-size: 11px;
-
-    margin-bottom: 5px;
-
-    white-space: nowrap;
-}
-
-
-.metric-card strong {
-    display: block;
-
-    color:
-        var(--text);
-
-    font-size: 16px;
-
-    font-weight: 750;
-
-    white-space: nowrap;
-}
-
-
-/* =====================================================
-   UPDATED TIME
-===================================================== */
-
-.updated {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 6px;
-
-    color:
-        var(--muted);
-
-    font-size: 11px;
-
-    margin-top: 25px;
-}
-
-
-.update-dot {
-    width: 6px;
-    height: 6px;
-
-    flex-shrink: 0;
-
-    background:
-        var(--success);
-
-    border-radius: 50%;
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-.site-footer {
-    width: 100%;
-
-    margin-top: auto;
-
-    background:
-        #ffffff;
-
-    border-top:
-        1px solid var(--border);
-}
-
-
-.footer-inner {
-    width: 100%;
-
-    max-width: 1050px;
-
-    margin: 0 auto;
-
-    padding:
-        22px 25px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-}
-
-
-/* =====================================================
-   FOOTER BRAND
-===================================================== */
-
-.footer-brand {
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-}
-
-
-.footer-icon {
-    width: 38px;
-    height: 38px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background:
-        var(--primary-light);
-
-    border-radius: 10px;
-
-    font-size: 19px;
-}
-
-
-.footer-brand strong {
-    display: block;
-
-    font-size: 13px;
-}
-
-
-.footer-brand span:not(.footer-icon) {
-    display: block;
-
-    margin-top: 2px;
-
-    color:
-        var(--muted);
-
-    font-size: 10px;
-}
-
-
-/* =====================================================
-   FOOTER CREDIT
-===================================================== */
-
-.footer-credit {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: flex-end;
-
-    flex-wrap: wrap;
-
-    gap: 6px;
-
-    color:
-        var(--muted);
-
-    font-size: 12px;
-
-    text-align: right;
-}
-
-
-.footer-credit strong {
-    color:
-        var(--text);
-
-    font-weight: 700;
-}
-
-
-.footer-credit a {
-    margin-left: 5px;
-
-    color:
-        var(--primary);
-
-    font-weight: 650;
-
-    text-decoration: none;
-
-    transition:
-        color 0.2s ease;
-}
-
-
-.footer-credit a:hover {
-    color:
-        var(--primary-dark);
-
-    text-decoration: underline;
-}
-
-
-/* =====================================================
-   FOOTER BOTTOM
-===================================================== */
-
-.footer-bottom {
-    width: 100%;
-
-    max-width: 1050px;
-
-    margin: 0 auto;
-
-    padding:
-        12px 25px 18px;
-
-    border-top:
-        1px solid #f1f5f9;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 10px;
-
-    color:
-        #94a3b8;
-
-    font-size: 10px;
-}
-
-
-/* =====================================================
-   ANIMATIONS
-===================================================== */
-
-@keyframes appEnter {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-}
-
-
-@keyframes dashboardEnter {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(8px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-}
-
-
-@keyframes floating {
-
-    0%,
-    100% {
-        transform:
-            translateY(0);
-    }
-
-    50% {
-        transform:
-            translateY(-7px);
-    }
-}
-
-
-@keyframes pulse {
-
-    0% {
-        box-shadow:
-            0 0 0 0
-            rgba(34, 197, 94, 0.35);
-    }
-
-    70% {
-        box-shadow:
-            0 0 0 6px
-            rgba(34, 197, 94, 0);
-    }
-
-    100% {
-        box-shadow:
-            0 0 0 0
-            rgba(34, 197, 94, 0);
-    }
-}
-
-
-@keyframes spin {
-
-    to {
-        transform:
-            rotate(360deg);
-    }
-}
-
-
-@keyframes shake {
-
-    0%,
-    100% {
-        transform:
-            translateX(0);
-    }
-
-    25% {
-        transform:
-            translateX(-4px);
-    }
-
-    75% {
-        transform:
-            translateX(4px);
-    }
-}
-
-
-/* =====================================================
-   TABLET
-===================================================== */
-
-@media (max-width: 760px) {
-
-    .weather-app {
-        margin:
-            25px auto;
-    }
-
-
-    .metrics {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-    }
-
-
-    .footer-inner {
-        align-items:
-            flex-start;
-
-        flex-direction:
-            column;
-    }
-
-
-    .footer-credit {
-        justify-content:
-            flex-start;
-
-        text-align:
-            left;
-    }
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 600px) {
-
-    /* Header */
-
-    .header-inner {
-        padding:
-            12px 16px;
-    }
-
-
-    .brand-icon {
-        width: 38px;
-        height: 38px;
-
-        font-size: 19px;
-    }
-
-
-    .brand strong {
-        font-size: 15px;
-    }
-
-
-    .header-status {
-        font-size: 10px;
-
-        padding:
-            7px 10px;
-    }
-
-
-    /* Main */
-
-    .weather-app {
-        width:
-            calc(100% - 20px);
-
-        margin:
-            15px auto;
-
-        border-radius:
-            18px;
-    }
-
-
-    /* Hero */
-
-    .hero {
-        min-height:
-            220px;
-
-        padding:
-            30px 24px;
-    }
-
-
-    .hero h1 {
-        font-size:
-            29px;
-    }
-
-
-    .hero p {
-        font-size:
-            13px;
-
-        line-height:
-            1.6;
-    }
-
-
-    .hero-weather-icon {
-        position:
-            absolute;
-
-        right:
-            18px;
-
-        top:
-            22px;
-
-        font-size:
-            48px;
-
-        opacity:
-            0.9;
-    }
-
-
-    /* Search */
-
-    .search-section {
-        padding:
-            20px;
-    }
-
-
-    #searchForm {
-        flex-direction:
-            column;
-
-        align-items:
-            stretch;
-
-        gap:
-            10px;
-    }
-
-
-    .input-wrapper {
-        width:
-            100%;
-    }
-
-
-    #cityInput {
-        width:
-            100%;
-    }
-
-
-    #searchButton {
-        width:
-            100%;
-
-        min-width:
-            100%;
-
-        flex:
-            none;
-    }
-
-
-    /* Dashboard */
-
-    .weather-dashboard {
-        padding:
-            0 20px 25px;
-    }
-
-
-    /* Location */
-
-    .location-card {
-        padding:
-            24px 2px;
-    }
-
-
-    .location-card h2 {
-        font-size:
-            25px;
-    }
-
-
-    .current-icon {
-        width:
-            62px;
-
-        height:
-            62px;
-
-        border-radius:
-            18px;
-
-        font-size:
-            38px;
-    }
-
-
-    /* Temperature */
-
-    .temperature-card {
-        padding:
-            30px 5px;
-    }
-
-
-    .temperature {
-        font-size:
-            58px;
-
-        letter-spacing:
-            -2px;
-    }
-
-
-    /* Metrics */
-
-    .metrics {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-        gap:
-            10px;
-    }
-
-
-    .metric-card {
-        min-height:
-            90px;
-
-        padding:
-            14px;
-
-        gap:
-            9px;
-    }
-
-
-    .metric-icon {
-        width:
-            38px;
-
-        height:
-            38px;
-
-        font-size:
-            19px;
-    }
-
-
-    .metric-card span {
-        font-size:
-            10px;
-    }
-
-
-    .metric-card strong {
-        font-size:
-            14px;
-    }
-
-
-    /* Footer */
-
-    .footer-inner {
-        padding:
-            20px 18px;
-
-        gap:
-            15px;
-    }
-
-
-    .footer-bottom {
-        padding:
-            12px 18px 16px;
-
-        flex-direction:
-            column;
-
-        align-items:
-            flex-start;
-
-        gap:
-            5px;
-    }
-}
-
-
-/* =====================================================
-   SMALL MOBILE
-===================================================== */
-
-@media (max-width: 420px) {
-
-    .header-status {
-        display:
-            none;
-    }
-
-
-    .hero {
-        padding:
-            27px 20px;
-    }
-
-
-    .hero h1 {
-        font-size:
-            26px;
-    }
-
-
-    .hero p {
-        max-width:
-            270px;
-    }
-
-
-    .hero-weather-icon {
-        font-size:
-            42px;
-    }
-
-
-    .metrics {
-        grid-template-columns:
-            1fr;
-    }
-
-
-    .metric-card {
-        min-height:
-            76px;
-    }
-
-
-    .footer-credit {
-        font-size:
-            11px;
-    }
-}
-
-
-/* =====================================================
-   ACCESSIBILITY
-===================================================== */
-
-button:focus-visible,
-input:focus-visible,
-a:focus-visible {
-    outline:
-        3px solid
-        rgba(37, 99, 235, 0.30);
-
-    outline-offset:
-        3px;
-}
-
-
-/* =====================================================
-   REDUCED MOTION
-===================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        scroll-behavior:
-            auto !important;
-
-        animation-duration:
-            0.01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        transition-duration:
-            0.01ms !important;
-    }
-}
+</html>

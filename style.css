@@ -1,4 +1,11 @@
 /* =====================================================
+   WEATHER DASHBOARD
+   Modern Responsive UI
+   Made by Priyabrata Patra
+===================================================== */
+
+
+/* =====================================================
    RESET
 ===================================================== */
 
@@ -10,7 +17,7 @@
 
 
 /* =====================================================
-   ROOT
+   ROOT VARIABLES
 ===================================================== */
 
 :root {
@@ -30,6 +37,8 @@
     --danger: #dc2626;
     --danger-bg: #fef2f2;
 
+    --success: #22c55e;
+
     --shadow-sm:
         0 4px 15px rgba(15, 23, 42, 0.05);
 
@@ -41,12 +50,17 @@
 
 
 /* =====================================================
-   BODY
+   HTML
 ===================================================== */
 
 html {
     scroll-behavior: smooth;
 }
+
+
+/* =====================================================
+   BODY
+===================================================== */
 
 body {
     min-height: 100vh;
@@ -69,8 +83,6 @@ body {
         var(--background);
 
     color: var(--text);
-
-    padding: 0;
 
     -webkit-font-smoothing: antialiased;
 }
@@ -95,72 +107,93 @@ body {
 .site-header {
     width: 100%;
 
-    background: rgba(255, 255, 255, 0.88);
+    background:
+        rgba(255, 255, 255, 0.90);
 
-    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    border-bottom:
+        1px solid rgba(226, 232, 240, 0.85);
 
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
 
     position: sticky;
+
     top: 0;
+
     z-index: 100;
 }
 
+
 .header-inner {
     width: 100%;
+
     max-width: 1050px;
 
-    margin: auto;
+    margin: 0 auto;
 
     padding: 15px 25px;
 
     display: flex;
-    justify-content: space-between;
+
     align-items: center;
+
+    justify-content: space-between;
 }
 
 
-/* Brand */
+/* =====================================================
+   BRAND
+===================================================== */
 
 .brand {
     display: flex;
+
     align-items: center;
+
     gap: 10px;
 
-    text-decoration: none;
-
     color: var(--text);
+
+    text-decoration: none;
 }
+
 
 .brand-icon {
     width: 42px;
     height: 42px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    background: var(--primary-light);
+    background:
+        var(--primary-light);
 
     border-radius: 12px;
 
     font-size: 22px;
 
-    box-shadow: var(--shadow-sm);
+    box-shadow:
+        var(--shadow-sm);
 }
+
 
 .brand strong {
     display: block;
 
     font-size: 16px;
+
     font-weight: 750;
+
+    line-height: 1.2;
 }
+
 
 .brand small {
     display: block;
 
-    margin-top: 1px;
+    margin-top: 2px;
 
     color: var(--muted);
 
@@ -168,12 +201,16 @@ body {
 }
 
 
-/* Live status */
+/* =====================================================
+   LIVE STATUS
+===================================================== */
 
 .header-status {
     display: flex;
+
     align-items: center;
-    gap: 7px;
+
+    gap: 8px;
 
     padding: 8px 13px;
 
@@ -186,30 +223,37 @@ body {
     border-radius: 50px;
 
     font-size: 12px;
-    font-weight: 600;
+
+    font-weight: 650;
 }
+
 
 .status-dot {
     width: 7px;
     height: 7px;
 
-    background: #22c55e;
+    flex-shrink: 0;
+
+    background: var(--success);
 
     border-radius: 50%;
 
     box-shadow:
-        0 0 0 4px rgba(34, 197, 94, 0.12);
+        0 0 0 4px
+        rgba(34, 197, 94, 0.12);
 
-    animation: pulse 2s infinite;
+    animation:
+        pulse 2s infinite;
 }
 
 
 /* =====================================================
-   MAIN APP
+   MAIN WEATHER APP
 ===================================================== */
 
 .weather-app {
     width: calc(100% - 30px);
+
     max-width: 900px;
 
     margin: 35px auto;
@@ -220,11 +264,15 @@ body {
 
     overflow: hidden;
 
-    box-shadow: var(--shadow);
+    border:
+        1px solid
+        rgba(226, 232, 240, 0.85);
 
-    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow:
+        var(--shadow);
 
-    animation: appEnter 0.55s ease;
+    animation:
+        appEnter 0.55s ease;
 }
 
 
@@ -238,10 +286,13 @@ body {
     padding: 38px 40px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     position: relative;
+
     overflow: hidden;
 
     color: white;
@@ -269,6 +320,7 @@ body {
     pointer-events: none;
 }
 
+
 .hero::before {
     width: 230px;
     height: 230px;
@@ -276,8 +328,10 @@ body {
     right: -70px;
     top: -90px;
 
-    background: rgba(255, 255, 255, 0.08);
+    background:
+        rgba(255, 255, 255, 0.08);
 }
+
 
 .hero::after {
     width: 150px;
@@ -286,21 +340,28 @@ body {
     left: 45%;
     bottom: -110px;
 
-    background: rgba(255, 255, 255, 0.06);
+    background:
+        rgba(255, 255, 255, 0.06);
 }
 
 
-/* Hero content */
+/* =====================================================
+   HERO CONTENT
+===================================================== */
 
 .hero-content {
     position: relative;
+
     z-index: 2;
 
     max-width: 650px;
 }
 
+
 .hero-badge {
     display: inline-flex;
+
+    align-items: center;
 
     padding: 7px 12px;
 
@@ -308,18 +369,24 @@ body {
 
     border-radius: 50px;
 
-    background: rgba(255, 255, 255, 0.14);
+    background:
+        rgba(255, 255, 255, 0.14);
 
-    border: 1px solid rgba(255, 255, 255, 0.18);
-
-    font-size: 11px;
-    font-weight: 650;
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.18);
 
     backdrop-filter: blur(8px);
+
+    font-size: 11px;
+
+    font-weight: 650;
 }
 
+
 .hero h1 {
-    font-size: clamp(28px, 4vw, 38px);
+    font-size:
+        clamp(28px, 4vw, 38px);
 
     line-height: 1.15;
 
@@ -328,33 +395,43 @@ body {
     letter-spacing: -0.8px;
 }
 
+
 .hero p {
     max-width: 560px;
 
-    color: rgba(255, 255, 255, 0.88);
+    color:
+        rgba(255, 255, 255, 0.88);
 
     font-size: 14px;
 
     line-height: 1.7;
 }
 
+
+/* =====================================================
+   HERO WEATHER ICON
+===================================================== */
+
 .hero-weather-icon {
     position: relative;
+
     z-index: 2;
 
     font-size: 78px;
 
     filter:
         drop-shadow(
-            0 10px 20px rgba(0, 0, 0, 0.15)
+            0 10px 20px
+            rgba(0, 0, 0, 0.15)
         );
 
-    animation: floating 3s ease-in-out infinite;
+    animation:
+        floating 3s ease-in-out infinite;
 }
 
 
 /* =====================================================
-   SEARCH
+   SEARCH SECTION
 ===================================================== */
 
 .search-section {
@@ -362,52 +439,86 @@ body {
 
     background: white;
 
-    border-bottom: 1px solid var(--border);
+    border-bottom:
+        1px solid var(--border);
 }
 
+
+/* =====================================================
+   SEARCH FORM
+===================================================== */
+
 #searchForm {
+    width: 100%;
+
     display: flex;
+
+    align-items: center;
 
     gap: 12px;
 }
 
 
-/* Input */
+/* =====================================================
+   INPUT WRAPPER
+===================================================== */
 
 .input-wrapper {
     position: relative;
 
-    flex: 1;
+    flex: 1 1 auto;
+
+    min-width: 0;
 }
+
+
+/* =====================================================
+   SEARCH ICON
+===================================================== */
 
 .search-icon {
     position: absolute;
 
     left: 16px;
+
     top: 50%;
 
-    transform: translateY(-50%);
+    transform:
+        translateY(-50%);
 
     font-size: 17px;
 
     pointer-events: none;
 
     opacity: 0.7;
+
+    z-index: 2;
 }
+
+
+/* =====================================================
+   CITY INPUT
+===================================================== */
 
 #cityInput {
     width: 100%;
+
     height: 54px;
 
-    padding: 0 18px 0 47px;
+    display: block;
 
-    border: 1px solid var(--border);
+    padding:
+        0 18px 0 47px;
+
+    border:
+        1px solid var(--border);
 
     border-radius: 13px;
 
     outline: none;
 
-    background: var(--surface-soft);
+    background:
+        var(--surface-soft);
 
     color: var(--text);
 
@@ -419,18 +530,22 @@ body {
         background 0.25s ease;
 }
 
+
 #cityInput::placeholder {
     color: #94a3b8;
 }
+
 
 #cityInput:hover {
     border-color: #cbd5e1;
 }
 
+
 #cityInput:focus {
     background: white;
 
-    border-color: var(--primary);
+    border-color:
+        var(--primary);
 
     box-shadow:
         0 0 0 4px
@@ -438,13 +553,22 @@ body {
 }
 
 
-/* Search button */
+/* =====================================================
+   SEARCH BUTTON
+===================================================== */
 
 #searchButton {
-    min-width: 160px;
+    flex:
+        0 0 165px;
+
+    width: 165px;
+
+    min-width: 165px;
+
     height: 54px;
 
-    padding: 0 18px;
+    padding:
+        0 18px;
 
     border: none;
 
@@ -460,14 +584,20 @@ body {
     color: white;
 
     font-size: 14px;
+
     font-weight: 700;
 
     cursor: pointer;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
-    gap: 10px;
+
+    gap: 9px;
+
+    white-space: nowrap;
 
     box-shadow:
         0 7px 18px
@@ -476,11 +606,14 @@ body {
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
-        background 0.2s ease;
+        background 0.2s ease,
+        opacity 0.2s ease;
 }
 
+
 #searchButton:hover {
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 
     box-shadow:
         0 10px 24px
@@ -494,9 +627,12 @@ body {
         );
 }
 
+
 #searchButton:active {
-    transform: translateY(0);
+    transform:
+        translateY(0);
 }
+
 
 #searchButton:disabled {
     opacity: 0.65;
@@ -508,14 +644,25 @@ body {
     box-shadow: none;
 }
 
+
+/* =====================================================
+   BUTTON ARROW
+===================================================== */
+
 .button-arrow {
     font-size: 18px;
 
-    transition: transform 0.2s ease;
+    line-height: 1;
+
+    transition:
+        transform 0.2s ease;
 }
 
-#searchButton:hover .button-arrow {
-    transform: translateX(3px);
+
+#searchButton:hover
+.button-arrow {
+    transform:
+        translateX(3px);
 }
 
 
@@ -527,52 +674,69 @@ body {
     display: none;
 
     align-items: center;
+
     justify-content: center;
 
     gap: 10px;
 
     padding: 18px;
 
-    color: var(--primary);
+    background:
+        var(--primary-light);
+
+    color:
+        var(--primary);
 
     font-size: 13px;
-    font-weight: 650;
 
-    background: var(--primary-light);
+    font-weight: 650;
 }
+
+
+/* =====================================================
+   LOADER
+===================================================== */
 
 .loader {
     width: 18px;
     height: 18px;
 
-    border: 2px solid #bfdbfe;
+    border:
+        2px solid #bfdbfe;
 
-    border-top-color: var(--primary);
+    border-top-color:
+        var(--primary);
 
     border-radius: 50%;
 
-    animation: spin 0.8s linear infinite;
+    animation:
+        spin 0.8s linear infinite;
 }
 
 
 /* =====================================================
-   ERROR
+   ERROR MESSAGE
 ===================================================== */
 
 .error-message {
     display: none;
 
-    margin: 20px 30px;
+    margin:
+        20px 30px;
 
-    padding: 14px 16px;
+    padding:
+        14px 16px;
 
     border-radius: 12px;
 
-    background: var(--danger-bg);
+    background:
+        var(--danger-bg);
 
-    border: 1px solid #fecaca;
+    border:
+        1px solid #fecaca;
 
-    color: var(--danger);
+    color:
+        var(--danger);
 
     font-size: 13px;
 
@@ -580,7 +744,8 @@ body {
 
     text-align: center;
 
-    animation: shake 0.35s ease;
+    animation:
+        shake 0.35s ease;
 }
 
 
@@ -591,39 +756,55 @@ body {
 .weather-dashboard {
     display: none;
 
-    padding: 5px 35px 35px;
+    padding:
+        5px 35px 35px;
 
-    animation: dashboardEnter 0.45s ease;
+    animation:
+        dashboardEnter 0.45s ease;
 }
 
 
 /* =====================================================
-   LOCATION
+   LOCATION CARD
 ===================================================== */
 
 .location-card {
     display: flex;
 
-    justify-content: space-between;
     align-items: center;
 
-    padding: 28px 5px;
+    justify-content: space-between;
 
-    border-bottom: 1px solid var(--border);
+    gap: 20px;
+
+    padding:
+        28px 5px;
+
+    border-bottom:
+        1px solid var(--border);
 }
+
+
+.location-info {
+    min-width: 0;
+}
+
 
 .location-label {
     display: block;
 
     margin-bottom: 7px;
 
-    color: var(--primary);
+    color:
+        var(--primary);
 
     font-size: 10px;
+
     font-weight: 750;
 
     letter-spacing: 1px;
 }
+
 
 .location-card h2 {
     font-size: 29px;
@@ -633,20 +814,34 @@ body {
     margin-bottom: 5px;
 
     letter-spacing: -0.4px;
+
+    overflow-wrap: anywhere;
 }
 
+
 .location-card p {
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: 14px;
 }
 
+
+/* =====================================================
+   CURRENT WEATHER ICON
+===================================================== */
+
 .current-icon {
     width: 76px;
+
     height: 76px;
 
+    flex-shrink: 0;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     background:
@@ -660,24 +855,29 @@ body {
 
     font-size: 47px;
 
-    box-shadow: var(--shadow-sm);
+    box-shadow:
+        var(--shadow-sm);
 
-    animation: floating 3s ease-in-out infinite;
+    animation:
+        floating 3s ease-in-out infinite;
 }
 
 
 /* =====================================================
-   TEMPERATURE
+   TEMPERATURE CARD
 ===================================================== */
 
 .temperature-card {
     text-align: center;
 
-    padding: 35px 10px 32px;
+    padding:
+        35px 10px 32px;
 }
 
+
 .temperature {
-    font-size: clamp(55px, 9vw, 76px);
+    font-size:
+        clamp(55px, 9vw, 76px);
 
     font-weight: 800;
 
@@ -685,23 +885,26 @@ body {
 
     letter-spacing: -3px;
 
-    color: var(--primary);
+    color:
+        var(--primary);
 
     text-shadow:
         0 8px 25px
         rgba(37, 99, 235, 0.12);
 }
 
+
 .description {
     margin-top: 13px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: 15px;
 
-    text-transform: capitalize;
-
     font-weight: 500;
+
+    text-transform: capitalize;
 }
 
 
@@ -713,17 +916,23 @@ body {
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4, minmax(0, 1fr));
 
     gap: 14px;
 }
+
+
+/* =====================================================
+   METRIC CARD
+===================================================== */
 
 .metric-card {
     min-height: 100px;
 
     padding: 18px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     border-radius: 16px;
 
@@ -746,15 +955,23 @@ body {
         border-color 0.25s ease;
 }
 
-.metric-card:hover {
-    transform: translateY(-4px);
 
-    border-color: #bfdbfe;
+.metric-card:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        #bfdbfe;
 
     box-shadow:
         0 10px 25px
         rgba(15, 23, 42, 0.07);
 }
+
+
+/* =====================================================
+   METRIC ICON
+===================================================== */
 
 .metric-icon {
     width: 43px;
@@ -763,61 +980,87 @@ body {
     flex-shrink: 0;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    background: var(--primary-light);
+    background:
+        var(--primary-light);
 
     border-radius: 12px;
 
     font-size: 22px;
 }
 
+
+/* =====================================================
+   METRIC CONTENT
+===================================================== */
+
+.metric-content {
+    min-width: 0;
+}
+
+
 .metric-card span {
     display: block;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: 11px;
 
     margin-bottom: 5px;
+
+    white-space: nowrap;
 }
+
 
 .metric-card strong {
     display: block;
 
-    color: var(--text);
+    color:
+        var(--text);
 
     font-size: 16px;
 
     font-weight: 750;
+
+    white-space: nowrap;
 }
 
 
 /* =====================================================
-   UPDATED
+   UPDATED TIME
 ===================================================== */
 
 .updated {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     gap: 6px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: 11px;
 
     margin-top: 25px;
 }
 
+
 .update-dot {
     width: 6px;
     height: 6px;
 
-    background: #22c55e;
+    flex-shrink: 0;
+
+    background:
+        var(--success);
 
     border-radius: 50%;
 }
@@ -832,29 +1075,37 @@ body {
 
     margin-top: auto;
 
-    background: #ffffff;
+    background:
+        #ffffff;
 
-    border-top: 1px solid var(--border);
+    border-top:
+        1px solid var(--border);
 }
+
 
 .footer-inner {
     width: 100%;
+
     max-width: 1050px;
 
-    margin: auto;
+    margin: 0 auto;
 
-    padding: 22px 25px;
+    padding:
+        22px 25px;
 
     display: flex;
 
-    justify-content: space-between;
     align-items: center;
+
+    justify-content: space-between;
 
     gap: 20px;
 }
 
 
-/* Footer brand */
+/* =====================================================
+   FOOTER BRAND
+===================================================== */
 
 .footer-brand {
     display: flex;
@@ -864,20 +1115,25 @@ body {
     gap: 10px;
 }
 
+
 .footer-icon {
     width: 38px;
     height: 38px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    background: var(--primary-light);
+    background:
+        var(--primary-light);
 
     border-radius: 10px;
 
     font-size: 19px;
 }
+
 
 .footer-brand strong {
     display: block;
@@ -885,71 +1141,101 @@ body {
     font-size: 13px;
 }
 
+
 .footer-brand span:not(.footer-icon) {
     display: block;
 
     margin-top: 2px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: 10px;
 }
 
 
-/* Footer credit */
+/* =====================================================
+   FOOTER CREDIT
+===================================================== */
 
 .footer-credit {
     display: flex;
 
     align-items: center;
 
+    justify-content: flex-end;
+
+    flex-wrap: wrap;
+
     gap: 6px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: 12px;
+
+    text-align: right;
 }
 
+
 .footer-credit strong {
-    color: var(--text);
+    color:
+        var(--text);
+
+    font-weight: 700;
 }
+
 
 .footer-credit a {
     margin-left: 5px;
 
-    color: var(--primary);
+    color:
+        var(--primary);
 
     font-weight: 650;
 
     text-decoration: none;
 
-    transition: color 0.2s ease;
+    transition:
+        color 0.2s ease;
 }
 
+
 .footer-credit a:hover {
-    color: var(--primary-dark);
+    color:
+        var(--primary-dark);
 
     text-decoration: underline;
 }
 
 
-/* Bottom */
+/* =====================================================
+   FOOTER BOTTOM
+===================================================== */
 
 .footer-bottom {
     width: 100%;
+
     max-width: 1050px;
 
-    margin: auto;
+    margin: 0 auto;
 
-    padding: 12px 25px 18px;
+    padding:
+        12px 25px 18px;
 
-    border-top: 1px solid #f1f5f9;
+    border-top:
+        1px solid #f1f5f9;
 
     display: flex;
 
+    align-items: center;
+
     justify-content: space-between;
 
-    color: #94a3b8;
+    gap: 10px;
+
+    color:
+        #94a3b8;
 
     font-size: 10px;
 }
@@ -960,41 +1246,58 @@ body {
 ===================================================== */
 
 @keyframes appEnter {
+
     from {
         opacity: 0;
-        transform: translateY(15px);
+
+        transform:
+            translateY(15px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
+
 
 @keyframes dashboardEnter {
+
     from {
         opacity: 0;
-        transform: translateY(8px);
+
+        transform:
+            translateY(8px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
 
+
 @keyframes floating {
+
     0%,
     100% {
-        transform: translateY(0);
+        transform:
+            translateY(0);
     }
 
     50% {
-        transform: translateY(-7px);
+        transform:
+            translateY(-7px);
     }
 }
 
+
 @keyframes pulse {
+
     0% {
         box-shadow:
             0 0 0 0
@@ -1014,24 +1317,32 @@ body {
     }
 }
 
+
 @keyframes spin {
+
     to {
-        transform: rotate(360deg);
+        transform:
+            rotate(360deg);
     }
 }
 
+
 @keyframes shake {
+
     0%,
     100% {
-        transform: translateX(0);
+        transform:
+            translateX(0);
     }
 
     25% {
-        transform: translateX(-4px);
+        transform:
+            translateX(-4px);
     }
 
     75% {
-        transform: translateX(4px);
+        transform:
+            translateX(4px);
     }
 }
 
@@ -1043,22 +1354,32 @@ body {
 @media (max-width: 760px) {
 
     .weather-app {
-        margin: 25px auto;
+        margin:
+            25px auto;
     }
+
 
     .metrics {
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2, minmax(0, 1fr));
     }
+
 
     .footer-inner {
-        align-items: flex-start;
+        align-items:
+            flex-start;
 
-        flex-direction: column;
+        flex-direction:
+            column;
     }
 
+
     .footer-credit {
-        flex-wrap: wrap;
+        justify-content:
+            flex-start;
+
+        text-align:
+            left;
     }
 }
 
@@ -1069,15 +1390,13 @@ body {
 
 @media (max-width: 600px) {
 
+    /* Header */
+
     .header-inner {
-        padding: 12px 16px;
+        padding:
+            12px 16px;
     }
 
-    .header-status {
-        font-size: 10px;
-
-        padding: 7px 10px;
-    }
 
     .brand-icon {
         width: 38px;
@@ -1086,126 +1405,246 @@ body {
         font-size: 19px;
     }
 
-    .weather-app {
-        width: calc(100% - 20px);
 
-        margin: 15px auto;
-
-        border-radius: 18px;
+    .brand strong {
+        font-size: 15px;
     }
+
+
+    .header-status {
+        font-size: 10px;
+
+        padding:
+            7px 10px;
+    }
+
+
+    /* Main */
+
+    .weather-app {
+        width:
+            calc(100% - 20px);
+
+        margin:
+            15px auto;
+
+        border-radius:
+            18px;
+    }
+
+
+    /* Hero */
 
     .hero {
-        min-height: 220px;
+        min-height:
+            220px;
 
-        padding: 30px 24px;
+        padding:
+            30px 24px;
     }
+
 
     .hero h1 {
-        font-size: 29px;
+        font-size:
+            29px;
     }
+
 
     .hero p {
-        font-size: 13px;
+        font-size:
+            13px;
 
-        line-height: 1.6;
+        line-height:
+            1.6;
     }
+
 
     .hero-weather-icon {
-        position: absolute;
+        position:
+            absolute;
 
-        right: 18px;
-        top: 22px;
+        right:
+            18px;
 
-        font-size: 48px;
+        top:
+            22px;
 
-        opacity: 0.9;
+        font-size:
+            48px;
+
+        opacity:
+            0.9;
     }
+
+
+    /* Search */
 
     .search-section {
-        padding: 20px;
+        padding:
+            20px;
     }
+
 
     #searchForm {
-        flex-direction: column;
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+        gap:
+            10px;
     }
+
+
+    .input-wrapper {
+        width:
+            100%;
+    }
+
+
+    #cityInput {
+        width:
+            100%;
+    }
+
 
     #searchButton {
-        width: 100%;
+        width:
+            100%;
+
+        min-width:
+            100%;
+
+        flex:
+            none;
     }
+
+
+    /* Dashboard */
 
     .weather-dashboard {
-        padding: 0 20px 25px;
+        padding:
+            0 20px 25px;
     }
+
+
+    /* Location */
 
     .location-card {
-        padding: 24px 2px;
+        padding:
+            24px 2px;
     }
+
 
     .location-card h2 {
-        font-size: 25px;
+        font-size:
+            25px;
     }
+
 
     .current-icon {
-        width: 62px;
-        height: 62px;
+        width:
+            62px;
 
-        border-radius: 18px;
+        height:
+            62px;
 
-        font-size: 38px;
+        border-radius:
+            18px;
+
+        font-size:
+            38px;
     }
+
+
+    /* Temperature */
 
     .temperature-card {
-        padding: 30px 5px;
+        padding:
+            30px 5px;
     }
+
 
     .temperature {
-        font-size: 58px;
+        font-size:
+            58px;
 
-        letter-spacing: -2px;
+        letter-spacing:
+            -2px;
     }
+
+
+    /* Metrics */
 
     .metrics {
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2, minmax(0, 1fr));
 
-        gap: 10px;
+        gap:
+            10px;
     }
+
 
     .metric-card {
-        min-height: 90px;
+        min-height:
+            90px;
 
-        padding: 14px;
+        padding:
+            14px;
 
-        gap: 9px;
+        gap:
+            9px;
     }
+
 
     .metric-icon {
-        width: 38px;
-        height: 38px;
+        width:
+            38px;
 
-        font-size: 19px;
+        height:
+            38px;
+
+        font-size:
+            19px;
     }
+
 
     .metric-card span {
-        font-size: 10px;
+        font-size:
+            10px;
     }
+
 
     .metric-card strong {
-        font-size: 14px;
+        font-size:
+            14px;
     }
+
+
+    /* Footer */
 
     .footer-inner {
-        padding: 20px 18px;
+        padding:
+            20px 18px;
 
-        gap: 15px;
+        gap:
+            15px;
     }
 
+
     .footer-bottom {
-        padding: 12px 18px 16px;
+        padding:
+            12px 18px 16px;
 
-        flex-direction: column;
+        flex-direction:
+            column;
 
-        gap: 5px;
+        align-items:
+            flex-start;
+
+        gap:
+            5px;
     }
 }
 
@@ -1217,35 +1656,50 @@ body {
 @media (max-width: 420px) {
 
     .header-status {
-        display: none;
+        display:
+            none;
     }
+
 
     .hero {
-        padding: 27px 20px;
+        padding:
+            27px 20px;
     }
+
 
     .hero h1 {
-        font-size: 26px;
+        font-size:
+            26px;
     }
+
 
     .hero p {
-        max-width: 270px;
+        max-width:
+            270px;
     }
+
 
     .hero-weather-icon {
-        font-size: 42px;
+        font-size:
+            42px;
     }
+
 
     .metrics {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
+
 
     .metric-card {
-        min-height: 76px;
+        min-height:
+            76px;
     }
 
+
     .footer-credit {
-        font-size: 11px;
+        font-size:
+            11px;
     }
 }
 
@@ -1257,25 +1711,34 @@ body {
 button:focus-visible,
 input:focus-visible,
 a:focus-visible {
-    outline: 3px solid rgba(37, 99, 235, 0.3);
+    outline:
+        3px solid
+        rgba(37, 99, 235, 0.30);
 
-    outline-offset: 3px;
+    outline-offset:
+        3px;
 }
 
 
-/* Reduced motion */
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
     *,
     *::before,
     *::after {
-        scroll-behavior: auto !important;
+        scroll-behavior:
+            auto !important;
 
-        animation-duration: 0.01ms !important;
+        animation-duration:
+            0.01ms !important;
 
-        animation-iteration-count: 1 !important;
+        animation-iteration-count:
+            1 !important;
 
-        transition-duration: 0.01ms !important;
+        transition-duration:
+            0.01ms !important;
     }
 }

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Weather Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="weather-app">
+
+        <!-- Header -->
+        <header class="header">
+
+            <div>
+                <h1>Weather Dashboard</h1>
+
+                <p>
+                    Search any city to view live weather data.
+                </p>
+            </div>
+
+            <div class="weather-icon">
+                ☀️
+            </div>
+
+        </header>
+
+
+        <!-- Search -->
+        <section class="search-section">
+
+            <form id="searchForm">
+
+                <input
+                    type="text"
+                    id="cityInput"
+                    placeholder="Enter city name..."
+                    autocomplete="off"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    id="searchButton"
+                >
+                    Search
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- Loading -->
+        <div
+            id="loading"
+            class="loading"
+            aria-live="polite"
+        >
+            Loading weather...
+        </div>
+
+
+        <!-- Error -->
+        <div
+            id="errorMessage"
+            class="error-message"
+            role="alert"
+        ></div>
+
+
+        <!-- Weather Dashboard -->
+        <section
+            id="weatherDashboard"
+            class="weather-dashboard"
+        >
+
+            <!-- Location -->
+            <div class="location-card">
+
+                <div>
+
+                    <h2 id="cityName">
+                        Kolkata
+                    </h2>
+
+                    <p id="countryName">
+                        India
+                    </p>
+
+                </div>
+
+                <div class="current-icon" id="weatherIcon">
+                    ☀️
+                </div>
+
+            </div>
+
+
+            <!-- Main Temperature -->
+            <div class="temperature-card">
+
+                <div
+                    id="temperature"
+                    class="temperature"
+                >
+                    --°C
+                </div>
+
+                <div
+                    id="weatherDescription"
+                    class="description"
+                >
+                    Weather
+                </div>
+
+            </div>
+
+
+            <!-- Metrics -->
+            <div class="metrics">
+
+                <article class="metric-card">
+
+                    <div class="metric-icon">
+                        💧
+                    </div>
+
+                    <div>
+                        <span>Humidity</span>
+
+                        <strong id="humidity">
+                            --%
+                        </strong>
+                    </div>
+
+                </article>
+
+
+                <article class="metric-card">
+
+                    <div class="metric-icon">
+                        💨
+                    </div>
+
+                    <div>
+                        <span>Wind Speed</span>
+
+                        <strong id="windSpeed">
+                            -- km/h
+                        </strong>
+                    </div>
+
+                </article>
+
+
+                <article class="metric-card">
+
+                    <div class="metric-icon">
+                        🌡️
+                    </div>
+
+                    <div>
+                        <span>Feels Like</span>
+
+                        <strong id="feelsLike">
+                            --°C
+                        </strong>
+                    </div>
+
+                </article>
+
+
+                <article class="metric-card">
+
+                    <div class="metric-icon">
+                        ☁️
+                    </div>
+
+                    <div>
+                        <span>Cloud Cover</span>
+
+                        <strong id="cloudCover">
+                            --%
+                        </strong>
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- Updated Time -->
+            <div class="updated">
+
+                Last updated:
+
+                <span id="updatedTime">
+                    --
+                </span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
